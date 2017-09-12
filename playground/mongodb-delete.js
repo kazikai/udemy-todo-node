@@ -1,6 +1,7 @@
 //const MongoClient = require('mongodb').MongoClient;
 const {MongoClient, ObjectID} = require('mongodb');
 const {mongoHost} = require('./local');
+
 MongoClient.connect(`mongodb://${mongoHost}/TodoApp`, (err, db) => {
   if (err) {
     console.log('Unable to connect to MongoDB server');
@@ -20,12 +21,24 @@ MongoClient.connect(`mongodb://${mongoHost}/TodoApp`, (err, db) => {
   //}, (err) => {
   //  console.log('Unable to fetch todos', err);
   //});
-  db.collection('Users').find({name: 'kazikai'}).toArray().then((docs) => {
-    console.log(JSON.stringify(docs, undefined, 2));
-  }, (err) => {
-    console.log('Unable to fetch todos', err);
+  /*
+  db.collection('Todos').findOneAndDelete({
+    completed: false
+  }).then((result) => {
+    console.log(result);
+  });
+  */
+  db.collection('Users').deleteMany({
+    name: 'kazikai'
+  }).then((result) => {
+    console.log(result);
   });
 
+  db.collection('Users').findOneAndDelete({
+    name: 'kazikai'
+  }).then((result) => {
+    console.log(result);
+  });
 
   //db.close();
 });
