@@ -1,4 +1,4 @@
-const mongoHost = 'dev.kazikai.net:12506';
+const mongoHost = 'mongoHost addrsss';
 
 module.exports = {
   mongoHost
