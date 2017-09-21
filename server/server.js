@@ -50,7 +50,7 @@ app.get('/todos/:id', (req, res) => {
       todo
     });
   }).catch((e) => {
-    res.status(400).send();
+    res.status(404).send();
   });
 });
 
